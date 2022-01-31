@@ -121,6 +121,17 @@ public:
         AlgorithmToolVector &algorithmToolVector);
 
     /**
+     *  @brief  Process a list of algorithms tools in an xml file, using a map instead of vector.
+     * 
+     *  @param  algorithm the parent algorithm calling this function
+     *  @param  xmlHandle the relevant xml handle
+     *  @param  listName the name of the algorithm tool list
+     *  @param  algorithmToolMap to receive the vector of addresses of the algorithm tool instances, but also keep the name
+     */
+    static StatusCode ProcessAlgorithmToolList(const Algorithm &algorithm, const TiXmlHandle &xmlHandle, const std::string &listName,
+					       AlgorithmToolMap &algorithmToolMap);
+
+    /**
      *  @brief  Tokenize a string
      * 
      *  @param  inputString the input string
