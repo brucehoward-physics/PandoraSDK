@@ -135,7 +135,7 @@ StatusCode XmlHelper::ProcessAlgorithmToolList(const Algorithm &algorithm, const
     {
         AlgorithmTool *pAlgorithmTool(nullptr);
         PANDORA_RETURN_RESULT_IF(STATUS_CODE_SUCCESS, !=, PandoraContentApi::CreateAlgorithmTool(algorithm, pXmlElement, pAlgorithmTool));
-	std::cout << pXmlElement->Attribute("type");
+	std::cout << pXmlElement->Attribute("type") << " ";
 	algorithmToolMap[ pXmlElement->Attribute("type") ] = pAlgorithmTool;
     }
 
