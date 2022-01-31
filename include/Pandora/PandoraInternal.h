@@ -468,6 +468,7 @@ typedef std::vector<std::string> StringVector;
 typedef std::vector<CartesianVector> CartesianPointVector;
 typedef std::vector<TrackState> TrackStateVector;
 typedef std::vector<AlgorithmTool *> AlgorithmToolVector;
+typedef std::map<const char*, AlgorithmTool *> AlgorithmToolMap;
 
 typedef const void * Uid;
 typedef std::unordered_map<Uid, const MCParticle *> UidToMCParticleMap;
