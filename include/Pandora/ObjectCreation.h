@@ -369,6 +369,8 @@ public:
     pandora::InputFloat                 m_x0;                       ///< For LArTPC usage, the x-coordinate shift associated with a drift time t0 shift, units mm
     pandora::InputVertexLabel           m_vertexLabel;              ///< The vertex label (interaction, start, end, etc.)
     pandora::InputVertexType            m_vertexType;               ///< The vertex type (3d, view u, v, w, etc.)
+    pandora::PropertiesMap              m_propertiesToAdd;          ///< The mapping from pfo property names to new values
+    pandora::StringVector               m_propertiesToRemove;       ///< The vector of pfo property names to remove
 };
 
 /**

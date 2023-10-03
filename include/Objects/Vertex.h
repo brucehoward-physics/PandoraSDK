@@ -60,6 +60,13 @@ public:
      */
     bool IsAvailable() const;
 
+    /**
+     *  @brief Get the map from registered property name to floating point property value
+     *
+     *  @return The properties map
+     */
+    const PropertiesMap &GetPropertiesMap() const;
+
 protected:
     /**
      *  @brief  Constructor
@@ -87,11 +94,19 @@ protected:
      */
     void SetAvailability(bool isAvailable);
 
+    /**
+     *  @brief Update the properties map
+     *
+     *  @param metaData the new vertex metadata
+     */
+    StatusCode UpdatePropertiesMap(const object_creation::Vertex::Metadata &metadata);
+
     CartesianVector         m_position;                 ///< The vertex position
     float                   m_x0;                       ///< For LArTPC usage, the x-coordinate shift associated with a drift time t0 shift, units mm
     VertexLabel             m_vertexLabel;              ///< The vertex label (interaction, start, end, etc.)
     VertexType              m_vertexType;               ///< The vertex type (3d, view u, v, w, etc.)
     bool                    m_isAvailable;              ///< Whether the track is available to be added to a particle flow object
+    PropertiesMap           m_propertiesMap;            ///< The map from registered property name to floating point property value
 
     friend class VertexManager;
     friend class AlgorithmObjectManager<Vertex>;
@@ -138,6 +153,13 @@ inline bool Vertex::IsAvailable() const
 inline void Vertex::SetAvailability(bool isAvailable)
 {
     m_isAvailable = isAvailable;
+}
+
+//------------------------------------------------------------------------------------------------------------------------------------------
+
+inline const PropertiesMap &Vertex::GetPropertiesMap() const
+{
+    return m_propertiesMap;
 }
 
 } // namespace pandora
