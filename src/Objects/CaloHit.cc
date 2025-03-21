@@ -114,7 +114,7 @@ CaloHit::CaloHit(const object_creation::CaloHitFragment::Parameters &parameters)
     m_mcParticleWeightMap(parameters.m_pOriginalCaloHit->m_mcParticleWeightMap),
     m_mcMatchWeight(parameters.m_weight.Get() * parameters.m_pOriginalCaloHit->m_mcMatchWeight),
     m_mcMatchPDG(parameters.m_pOriginalCaloHit->m_mcMatchPDG),
-    m_pParentAddress(parameters.m_pOriginalCaloHit->m_pParentAddress),
+    m_pParentAddress(parameters.m_pOriginalCaloHit->m_pParentAddress)
 {
     for (MCParticleWeightMap::value_type &mapEntry : m_mcParticleWeightMap)
         mapEntry.second = mapEntry.second * parameters.m_weight.Get();
