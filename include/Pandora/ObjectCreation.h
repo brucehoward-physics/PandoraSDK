@@ -137,6 +137,8 @@ public:
     pandora::InputUInt                  m_layer;                    ///< The subdetector readout layer number
     pandora::InputBool                  m_isInOuterSamplingLayer;   ///< Whether cell is in one of the outermost detector sampling layers
     pandora::InputAddress               m_pParentAddress;           ///< Address of the parent calo hit in the user framework
+    pandora::InputFloat                 m_mcMatchWeight;            ///< The match weight of best-matched MC particle, if used
+    pandora::InputInt                   m_mcMatchPDG;               ///< The PDG of the best-matched MC particle, if used
 };
 
 typedef ObjectCreationHelper<CaloHitParameters, CaloHitMetadata, pandora::CaloHit> CaloHit;

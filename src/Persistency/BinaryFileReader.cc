@@ -597,6 +597,10 @@ StatusCode BinaryFileReader::ReadCaloHit(bool checkComponentId)
         PANDORA_THROW_RESULT_IF(STATUS_CODE_SUCCESS, !=, this->ReadVariable(cellSize0));
         float cellSize1(0.f);
         PANDORA_THROW_RESULT_IF(STATUS_CODE_SUCCESS, !=, this->ReadVariable(cellSize1));
+        float mcMatchWeight(0.f);
+        PANDORA_THROW_RESULT_IF(STATUS_CODE_SUCCESS, !=, this->ReadVariable(mcMatchWeight));
+        int mcMatchPDG(0);
+        PANDORA_THROW_RESULT_IF(STATUS_CODE_SUCCESS, !=, this->ReadVariable(mcMatchPDG));
 
         pParameters->m_positionVector = positionVector;
         pParameters->m_expectedDirection = expectedDirection;
@@ -618,6 +622,8 @@ StatusCode BinaryFileReader::ReadCaloHit(bool checkComponentId)
         pParameters->m_layer = layer;
         pParameters->m_isInOuterSamplingLayer = isInOuterSamplingLayer;
         pParameters->m_pParentAddress = pParentAddress;
+        pParameters->m_mcMatchWeight = mcMatchWeight;
+        pParameters->m_mcMatchPDG = mcMatchPDG;
         PANDORA_THROW_RESULT_IF(STATUS_CODE_SUCCESS, !=, PandoraApi::CaloHit::Create(*m_pPandora, *pParameters, *m_pCaloHitFactory));
         delete pParameters;
     }

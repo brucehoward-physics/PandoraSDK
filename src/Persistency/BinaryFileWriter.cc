@@ -260,6 +260,8 @@ StatusCode BinaryFileWriter::WriteCaloHit(const CaloHit *const pCaloHit)
     PANDORA_RETURN_RESULT_IF(STATUS_CODE_SUCCESS, !=, this->WriteVariable(pCaloHit->GetParentAddress()));
     PANDORA_RETURN_RESULT_IF(STATUS_CODE_SUCCESS, !=, this->WriteVariable(pCaloHit->GetCellSize0()));
     PANDORA_RETURN_RESULT_IF(STATUS_CODE_SUCCESS, !=, this->WriteVariable(pCaloHit->GetCellSize1()));
+    PANDORA_RETURN_RESULT_IF(STATUS_CODE_SUCCESS, !=, this->WriteVariable(pCaloHit->mcMatchWeight()));
+    PANDORA_RETURN_RESULT_IF(STATUS_CODE_SUCCESS, !=, this->WriteVariable(pCaloHit->mcMatchPDG()));
 
     return STATUS_CODE_SUCCESS;
 }

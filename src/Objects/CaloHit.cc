@@ -75,7 +75,9 @@ CaloHit::CaloHit(const object_creation::CaloHit::Parameters &parameters) :
     m_isIsolated(false),
     m_isAvailable(true),
     m_weight(1.f),
-    m_pParentAddress(parameters.m_pParentAddress.Get())
+    m_pParentAddress(parameters.m_pParentAddress.Get()),
+    m_mcMatchWeight(0.),
+    m_mcMatchPDG(0)
 {
     m_cellLengthScale = this->CalculateCellLengthScale();
 }
@@ -110,8 +112,11 @@ CaloHit::CaloHit(const object_creation::CaloHitFragment::Parameters &parameters)
     m_isAvailable(parameters.m_pOriginalCaloHit->m_isAvailable),
     m_weight(parameters.m_weight.Get() * parameters.m_pOriginalCaloHit->m_weight),
     m_mcParticleWeightMap(parameters.m_pOriginalCaloHit->m_mcParticleWeightMap),
-    m_pParentAddress(parameters.m_pOriginalCaloHit->m_pParentAddress)
+    m_pParentAddress(parameters.m_pOriginalCaloHit->m_pParentAddress),
+    m_mcMatchPDG(parameters.m_pOriginalCaloHit->m_mcMatchPDG)
 {
+    m_mcMatchWeight = parameters.m_weight.Get() * parameters.m_pOriginalCaloHit->m_mcMatchWeight;
+
     for (MCParticleWeightMap::value_type &mapEntry : m_mcParticleWeightMap)
         mapEntry.second = mapEntry.second * parameters.m_weight.Get();
 }

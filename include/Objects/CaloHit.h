@@ -208,6 +208,20 @@ public:
     const MCParticleWeightMap &GetMCParticleWeightMap() const;
 
     /**
+     *  @brief  Get the MC match weight for best match to hit
+     *
+     *  @return the match weight
+     */
+    float GetMCMatchWeight() const;
+
+    /**
+     *  @brief  Get the MC match PDG for best match to hit
+     *
+     *  @return the match PDG
+     */
+    int GetMCMatchPDG() const;
+
+    /**
      *  @brief  Get the address of the parent calo hit in the user framework
      */
     const void *GetParentAddress() const;
@@ -336,6 +350,8 @@ protected:
     bool                    m_isAvailable;              ///< Whether the calo hit is available to be added to a cluster
     float                   m_weight;                   ///< The calo hit weight, which may not be unity if the hit has been fragmented
     MCParticleWeightMap     m_mcParticleWeightMap;      ///< The mc particle weight map
+    const float             m_mcMatchWeight;            ///< The MC match weight
+    const int               m_mcMatchPDG;               ///< The MC match PDG code
     const void             *m_pParentAddress;           ///< The address of the parent calo hit in the user framework
 
     friend class CaloHitMetadata;
@@ -529,6 +545,19 @@ inline const MCParticleWeightMap &CaloHit::GetMCParticleWeightMap() const
 
 //------------------------------------------------------------------------------------------------------------------------------------------
 
+inline float CaloHit::GetMCMatchWeight() const
+{
+    return m_mcMatchWeight;
+}
+
+//------------------------------------------------------------------------------------------------------------------------------------------
+
+inline int CaloHit::GetMCMatchPDG() const
+{
+    return m_mcMatchPDG;
+}
+
+//------------------------------------------------------------------------------------------------------------------------------------------
 inline const void *CaloHit::GetParentAddress() const
 {
     return m_pParentAddress;

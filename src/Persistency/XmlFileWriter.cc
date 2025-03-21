@@ -266,6 +266,8 @@ StatusCode XmlFileWriter::WriteCaloHit(const CaloHit *const pCaloHit)
     PANDORA_RETURN_RESULT_IF(STATUS_CODE_SUCCESS, !=, this->WriteVariable("ParentCaloHitAddress", pCaloHit->GetParentAddress()));
     PANDORA_RETURN_RESULT_IF(STATUS_CODE_SUCCESS, !=, this->WriteVariable("CellSize0", pCaloHit->GetCellSize0()));
     PANDORA_RETURN_RESULT_IF(STATUS_CODE_SUCCESS, !=, this->WriteVariable("CellSize1", pCaloHit->GetCellSize1()));
+    PANDORA_RETURN_RESULT_IF(STATUS_CODE_SUCCESS, !=, this->WriteVariable("mcMatchWeight", pCaloHit->mcMatchWeight()));
+    PANDORA_RETURN_RESULT_IF(STATUS_CODE_SUCCESS, !=, this->WriteVariable("mcMatchPDG", pCaloHit->mcMatchPDG()));
 
     m_pContainerXmlElement->LinkEndChild(m_pCurrentXmlElement);
     m_pCurrentXmlElement = nullptr;

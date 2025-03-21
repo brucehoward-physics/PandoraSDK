@@ -573,6 +573,10 @@ StatusCode XmlFileReader::ReadCaloHit()
         PANDORA_THROW_RESULT_IF(STATUS_CODE_SUCCESS, !=, this->ReadVariable("CellSize0", cellSize0));
         float cellSize1(0.f);
         PANDORA_THROW_RESULT_IF(STATUS_CODE_SUCCESS, !=, this->ReadVariable("CellSize1", cellSize1));
+        float mcMatchWeight(0.f);
+        PANDORA_THROW_RESULT_IF(STATUS_CODE_SUCCESS, !=, this->ReadVariable("mcMatchWeight", mcMatchWeight));
+        float mcMatchPDG(0);
+        PANDORA_THROW_RESULT_IF(STATUS_CODE_SUCCESS, !=, this->ReadVariable("mcMatchPDG", mcMatchPDG));
 
         pParameters->m_positionVector = positionVector;
         pParameters->m_expectedDirection = expectedDirection;
@@ -594,6 +598,8 @@ StatusCode XmlFileReader::ReadCaloHit()
         pParameters->m_layer = layer;
         pParameters->m_isInOuterSamplingLayer = isInOuterSamplingLayer;
         pParameters->m_pParentAddress = pParentAddress;
+        pParameters->m_mcMatchWeight = mcMatchWeight;
+        pParameters->m_mcMatchPDG = mcMatchPDG;
         PANDORA_THROW_RESULT_IF(STATUS_CODE_SUCCESS, !=, PandoraApi::CaloHit::Create(*m_pPandora, *pParameters, *m_pCaloHitFactory));
         delete pParameters;
     }
