@@ -75,8 +75,8 @@ CaloHit::CaloHit(const object_creation::CaloHit::Parameters &parameters) :
     m_isIsolated(false),
     m_isAvailable(true),
     m_weight(1.f),
-    m_mcMatchWeight(parameters.m_mcMatchWeight.Get()),
-    m_mcMatchPDG(parameters.m_mcMatchPDG.Get()),
+    m_mcMatchWeight(parameters.m_mcMatchWeight.IsInitialized() ? parameters.m_mcMatchWeight.Get() : 0.),
+    m_mcMatchPDG(parameters.m_mcMatchPDG.IsInitialized() ? parameters.m_mcMatchPDG.Get() : 0),
     m_pParentAddress(parameters.m_pParentAddress.Get())
 {
     m_cellLengthScale = this->CalculateCellLengthScale();
